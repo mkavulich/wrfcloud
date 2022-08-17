@@ -2,6 +2,9 @@
 #This section specifies settings about the user who created the run
 user:
     name: testuser
+static:
+    wpscodedir: /glade/p/ral/jntp/CCproject/wrfcloud/WPSV4.4_intel_serial_large-file/
+    wrfcodedir: /glade/p/ral/jntp/CCproject/wrfcloud/WRFV4.4_intel_dmpar/
 #This section specifies settings about what job is to be run
 run:
     configuration: test

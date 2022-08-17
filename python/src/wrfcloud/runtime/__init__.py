@@ -16,10 +16,6 @@ class RunInfo:
         self.topdir = os.getcwd()
         self.staticdir = self.topdir + '/configurations/' + name
         logging.debug(f'Static data directory is {self.staticdir}')
-        self.wpscodedir = self.topdir + '/WPSV4/'
-        logging.debug(f'WPS code directory is {self.wpscodedir}')
-        self.wrfcodedir = self.topdir + '/WRFV4/'
-        logging.debug(f'WRF code directory is {self.wrfcodedir}')
         self.read_config(name)
 
         logging.debug(f'Working directory set to {self.wd}')
@@ -44,6 +40,13 @@ class RunInfo:
                 config = yaml.safe_load(file)
             logging.debug('Read test.yml successfully, values are:')
         logging.debug(f'{config}')
+
+        config['run'].get('workdir','/data/')
+        self.wpscodedir = config['static'].get('wpscodedir',self.topdir + '/WPSV4/')
+        logging.debug(f'WPS code directory is {self.wpscodedir}')
+        self.wrfcodedir = config['static'].get('wrfcodedir',self.topdir + '/WRFV4/')
+        logging.debug(f'WRF code directory is {self.wrfcodedir}')
+
         self.configuration = config['run']['configuration']
         self.wd = config['run'].get('workdir','/data/')
         self.startdate = config['run']['start']
