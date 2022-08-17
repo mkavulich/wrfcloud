@@ -16,15 +16,16 @@ class RunInfo:
         self.topdir = os.getcwd()
         self.staticdir = self.topdir + '/configurations/' + name
         logging.debug(f'Static data directory is {self.staticdir}')
-        self.wpsdir = self.topdir + '/WPSV4/'
-        logging.debug(f'WPS directory is {self.wpsdir}')
-        self.wrfdir = self.topdir + '/WRFV4/'
-        logging.debug(f'WRF directory is {self.wrfdir}')
+        self.wpscodedir = self.topdir + '/WPSV4/'
+        logging.debug(f'WPS code directory is {self.wpscodedir}')
+        self.wrfcodedir = self.topdir + '/WRFV4/'
+        logging.debug(f'WRF code directory is {self.wrfcodedir}')
         self.read_config(name)
 
         logging.debug(f'Working directory set to {self.wd}')
         self.ungribdir = self.wd + '/ungrib'
         self.metgriddir = self.wd + '/metgrid'
+        self.wrfdir = self.wd + '/wrf'
 
     def read_config(self, name: str) -> None:
         """
